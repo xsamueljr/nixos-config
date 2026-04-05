@@ -2,17 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   unstable = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
     config.allowUnfree = true;
   };
-in {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+in
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -36,7 +42,10 @@ in {
   hardware.enableRedistributableFirmware = true;
 
   # 2. ahorro de energía que le chincha a la tarjeta + algo de un github
-  boot.kernelParams = [ "pcie_aspm=off" "mt7921_common.disable_clc=1" ];
+  boot.kernelParams = [
+    "pcie_aspm=off"
+    "mt7921_common.disable_clc=1"
+  ];
 
   # 3. evita que el driver se duerma
   boot.extraModprobeConfig = ''
@@ -49,7 +58,10 @@ in {
   networking.wireless.iwd.enable = true;
 
   # nix moderno
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -116,20 +128,14 @@ in {
   users.users.samuel = {
     isNormalUser = true;
     description = "samuel";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages =
     (with pkgs; [
       wget
@@ -142,10 +148,10 @@ in {
       brave
       discord
     ])
-    ++
-    (with unstable; [
+    ++ (with unstable; [
       zed-editor
       nil # nix language server
+      nixd # another one lol
       bun
       go
     ]);
