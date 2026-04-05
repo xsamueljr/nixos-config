@@ -2,9 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, inputs, ... }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -38,7 +42,7 @@
   boot.extraModprobeConfig = ''
     options mt7921e amsdu_disable=1
   '';
-  
+
   # 4. algo más de wifi potencia
   networking.networkmanager.wifi.powersave = false;
   networking.networkmanager.settings.wifi.backend = "iwd";
@@ -107,7 +111,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.samuel = {
     isNormalUser = true;
@@ -126,20 +130,25 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    curl
-    aria2
-    vlc
-    git
-    micro
-    obsidian
-    brave
-    zed-editor
-    bun
-    discord
-  ];
-
+  environment.systemPackages =
+    (with pkgs; [
+      wget
+      curl
+      aria2
+      vlc
+      git
+      micro
+      obsidian
+      brave
+      discord
+    ])
+    ++
+    (with unstable; [
+      zed-editor
+      nil # nix language server
+      bun
+      go
+    ]);
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
