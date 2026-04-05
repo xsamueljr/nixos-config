@@ -10,6 +10,11 @@
       btw = "echo i use nixos btw";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-config";
     };
+    initExtra = ''
+      function mkcd() {
+        mkdir -p $1 && cd $1
+      }
+    '';
   };
 
   programs.git = {
