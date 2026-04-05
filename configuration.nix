@@ -64,7 +64,9 @@ in
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
-    open = true;
+    powerManagement.finegrained = true;
+    # driver propietario
+    open = false;
 
     prime = {
       offload = {
