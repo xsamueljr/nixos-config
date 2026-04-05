@@ -57,6 +57,26 @@ in
   networking.networkmanager.settings.wifi.backend = "iwd";
   networking.wireless.iwd.enable = true;
 
+  # para poder usar la gráfica del portátil
+  # 1. drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = true;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+
+      amdgpuBusId = "PCI:5:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   # nix moderno
   nix.settings.experimental-features = [
     "nix-command"
