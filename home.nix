@@ -4,8 +4,6 @@
   home.homeDirectory = "/home/samuel";
   home.stateVersion = "25.11";
 
-  home.backupFileExtension = "hm-backup";
-
   programs.bash = {
     enable = true;
     shellAliases = {
