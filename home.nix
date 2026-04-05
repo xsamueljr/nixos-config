@@ -18,6 +18,7 @@
     settings = {
       user.name = "xsamueljr";
       user.email = "git@xsamueljr.anonaddy.me";
+      init.defaultBranch = "main";
     };
   };
 
