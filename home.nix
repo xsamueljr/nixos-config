@@ -7,15 +7,18 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      btw = "i use nixos btw";
+      btw = "echo i use nixos btw";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-config";
     };
   };
 
   programs.git = {
     enable = true;
-    userName = "samuel";
-    userEmail = "git@xsamueljr.anonaddy.me";
+
+    settings = {
+      user.name = "xsamueljr";
+      user.email = "git@xsamueljr.anonaddy.me";
+    };
   };
 
   programs.home-manager.enable = true;
