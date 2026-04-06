@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -15,24 +14,8 @@ let
   };
 in
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # pa no llenar el disco
   nix.gc = {
@@ -43,48 +26,6 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # cositas pa que furule la red
-  # 1. firmware propietario
-  hardware.enableRedistributableFirmware = true;
-
-  # 2. ahorro de energía que le chincha a la tarjeta + algo de un github
-  boot.kernelParams = [
-    "pcie_aspm=off"
-    "mt7921_common.disable_clc=1"
-  ];
-
-  # 3. evita que el driver se duerma
-  boot.extraModprobeConfig = ''
-    options mt7921e amsdu_disable=1
-  '';
-
-  # 4. algo más de wifi potencia
-  networking.networkmanager.wifi.powersave = false;
-  networking.networkmanager.settings.wifi.backend = "iwd";
-  networking.wireless.iwd.enable = true;
-
-  # para poder usar la gráfica del portátil
-  # 1. drivers
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = true;
-    # driver propietario
-    open = false;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-
-      amdgpuBusId = "PCI:5:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
 
   # nix moderno
   nix.settings.experimental-features = [
@@ -176,6 +117,7 @@ in
       obsidian
       brave
       discord
+      openssh
     ])
     ++ (with unstable; [
       zed-editor
