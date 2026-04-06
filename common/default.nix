@@ -14,19 +14,6 @@ let
   };
 in
 {
-  imports = [
-    inputs.caelestia-shell.default
-  ];
-
-  services.caelestia-shell.enable = true;
-
-  # Variables para que Wayland no se pelee con Nvidia
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  };
-
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -126,12 +113,20 @@ in
       openssh
     ])
     ++ (with unstable; [
+      inputs.caelestia-shell.packages."x86_64-linux".default
       zed-editor
       nil # nix language server
       nixd # another one lol
       bun
       go
     ]);
+
+  # Variables para que Wayland no se pelee con Nvidia
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
