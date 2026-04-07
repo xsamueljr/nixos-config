@@ -29,5 +29,9 @@
 
   programs.home-manager.enable = true;
 
+  programs.caelestia = {
+    enable = true;
+  };
+
   wayland.windowManager.hyprland.systemd.enable = false;
 }
