@@ -8,5 +8,6 @@
     useUserPackages = true;
     backupFileExtension = "hm-backup";
     users.samuel = import ../home.nix;
+    extraSpecialArgs = { inherit inputs; };
   };
 }

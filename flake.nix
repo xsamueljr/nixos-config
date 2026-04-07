@@ -22,6 +22,7 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      caelestia-shell,
       home-manager,
       ...
     }@inputs:
@@ -33,6 +34,7 @@
           modules = [
             ./hosts/laptop/configuration.nix
             ./common/home.nix
+            caelestia-shell.homeManagerModules.default
           ];
         };
 
@@ -42,6 +44,7 @@
           modules = [
             ./hosts/desktop/configuration.nix
             ./common/home.nix
+            caelestia-shell.homeManagerModules.default
           ];
         };
       };
