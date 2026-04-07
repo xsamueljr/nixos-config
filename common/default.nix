@@ -118,6 +118,9 @@ in
       brave
       discord
       openssh
+
+      jdk21
+      jetbrains.idea-oss
     ])
     ++ (with unstable; [
       zed-editor
