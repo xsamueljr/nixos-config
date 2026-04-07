@@ -117,6 +117,7 @@ in
       brave
       discord
       openssh
+      kitty
     ])
     ++ (with unstable; [
       inputs.caelestia-shell.packages."x86_64-linux".default
