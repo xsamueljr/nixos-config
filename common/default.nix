@@ -121,6 +121,10 @@ in
 
       jdk21
       jetbrains.idea-oss
+
+      # to flex
+      fastfetch
+      btop
     ])
     ++ (with unstable; [
       zed-editor
