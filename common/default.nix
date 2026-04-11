@@ -144,6 +144,39 @@ in
   programs.steam.enable = true;
 
   services.flatpak.enable = true;
+
+  # nix-ld with common libraries so a lot of binaries work
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # Librerías base que casi todo el mundo necesita
+      stdenv.cc.cc
+      zlib
+      fuse3
+      icu
+      nss
+      openssl
+      curl
+      expat
+
+      # Si vas a ejecutar apps gráficas o juegos, añade estas:
+      xorg.libX11
+      xorg.libXcursor
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXi
+      xorg.libXrender
+      xorg.libXtst
+      libGL
+      libpulseaudio
+
+      # LSPs de Zed
+      keyutils
+      libgcc.lib
+    ];
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
