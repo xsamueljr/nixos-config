@@ -14,6 +14,10 @@ let
   };
 in
 {
+  imports = [
+    ./android-dev.nix
+  ];
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
