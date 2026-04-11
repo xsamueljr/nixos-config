@@ -119,6 +119,7 @@ in
       tree
       vlc
       git
+      vscode
       micro
       obsidian
       brave
