@@ -115,6 +115,8 @@ in
       wget
       curl
       aria2
+      bat
+      tree
       vlc
       git
       micro
