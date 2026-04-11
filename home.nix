@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   home.username = "samuel";
   home.homeDirectory = "/home/samuel";
@@ -24,6 +24,14 @@
       user.name = "xsamueljr";
       user.email = "git@xsamueljr.anonaddy.me";
       init.defaultBranch = "main";
+    };
+  };
+
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      font-family = "JetBrains Mono";
+      background-opacity = 0.8;
     };
   };
 
