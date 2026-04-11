@@ -132,6 +132,10 @@ in
       # to flex
       fastfetch
       btop
+
+      # gaming
+      lutris
+      heroic
     ])
     ++ (with unstable; [
       zed-editor
