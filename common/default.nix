@@ -118,6 +118,7 @@ in
       bat
       tree
       vlc
+      obs-studio
       git
       vscode
       micro
