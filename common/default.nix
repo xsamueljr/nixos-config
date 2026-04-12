@@ -12,10 +12,12 @@ let
     system = "x86_64-linux";
     config.allowUnfree = true;
   };
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
   imports = [
     ./android-dev.nix
+    inputs.spicetify-nix.nixosModules.spicetify
   ];
 
   # Use latest kernel.
@@ -180,6 +182,15 @@ in
       keyutils
       libgcc.lib
     ];
+  };
+
+  programs.spicetify = {
+    enable = true;
+    enabledExtensions = with spicePkgs.extensions; [
+      adblockify
+      shuffle
+    ];
+    theme = spicePkgs.themes.starryNight;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
