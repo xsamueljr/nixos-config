@@ -114,22 +114,26 @@ in
 
   environment.systemPackages =
     (with pkgs; [
+      # CLI utils / apps
       wget
       curl
       aria2
       bat
       tree
+      git
+      micro
+      openssh
+
+      # Desktop apps
       vlc
       obs-studio
-      git
       vscode
       gnome-tweaks
-      micro
       obsidian
       brave
       discord
-      openssh
 
+      # Development
       jdk21
       jetbrains.idea-oss
 
@@ -140,6 +144,11 @@ in
       # gaming
       lutris
       heroic
+
+      # Nix-specific utilities
+      nh
+      nix-output-monitor
+      nvd
     ])
     ++ (with unstable; [
       zed-editor
