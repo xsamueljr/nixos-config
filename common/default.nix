@@ -131,7 +131,7 @@ in
       gnome-tweaks
       obsidian
       brave
-      discord
+      vesktop
 
       # Development
       jdk21
