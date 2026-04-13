@@ -123,6 +123,7 @@ in
       obs-studio
       git
       vscode
+      gnome-tweaks
       micro
       obsidian
       brave
