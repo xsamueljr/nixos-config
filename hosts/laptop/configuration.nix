@@ -49,4 +49,7 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "samuel" ];
 }
