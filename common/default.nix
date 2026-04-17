@@ -107,10 +107,21 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  # In /etc/nixos/configuration.nix
+  virtualisation.docker = {
+    enable = true;
+
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   environment.systemPackages =
     (with pkgs; [
@@ -136,6 +147,7 @@ in
       # Development
       jdk21
       jetbrains.idea-oss
+      docker-compose
 
       # to flex
       fastfetch
