@@ -157,9 +157,6 @@ in
       lutris
       heroic
 
-      # emulators (100% legal)
-      ryubing
-
       # Nix-specific utilities
       nh
       nix-output-monitor
@@ -171,6 +168,9 @@ in
       nixd # another one lol
       bun
       go
+
+      # emulators (100% real)
+      ryubing
     ]);
 
   programs.steam.enable = true;
