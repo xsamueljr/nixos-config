@@ -143,6 +143,7 @@ in
       obsidian
       brave
       vesktop
+      telegram-desktop
 
       # Development
       jdk21
