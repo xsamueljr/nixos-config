@@ -210,6 +210,8 @@ in
       libGL
       libpulseaudio
 
+      vulkan-loader
+
       # LSPs de Zed
       keyutils
       libgcc.lib
