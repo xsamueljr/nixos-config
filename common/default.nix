@@ -191,6 +191,10 @@ in
       openssl
       curl
       expat
+      fontconfig
+      freetype
+      harfbuzz
+      libpng
 
       # Si vas a ejecutar apps gráficas o juegos, añade estas:
       xorg.libX11
@@ -201,6 +205,8 @@ in
       xorg.libXi
       xorg.libXrender
       xorg.libXtst
+      xorg.libICE
+      xorg.libSM
       libGL
       libpulseaudio
 
