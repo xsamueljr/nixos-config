@@ -157,6 +157,9 @@ in
       lutris
       heroic
 
+      # emulators (100% legal)
+      ryubing
+
       # Nix-specific utilities
       nh
       nix-output-monitor
