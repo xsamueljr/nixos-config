@@ -9,6 +9,7 @@
     shellAliases = {
       btw = "echo i use nixos btw";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      zed = "zeditor";
     };
     initExtra = ''
       function mkcd() {
