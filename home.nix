@@ -8,7 +8,7 @@
     enable = true;
     shellAliases = {
       btw = "echo i use nixos btw";
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      nrs = "sudo -v && nh os switch ~/nixos-config";
       zed = "zeditor";
     };
     initExtra = ''
