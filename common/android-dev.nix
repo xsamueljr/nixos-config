@@ -12,6 +12,6 @@
   environment.systemPackages = with pkgs; [
     android-tools
     androidenv.androidPkgs.androidsdk
-    android-studio
+    android-studio-full
   ];
 }
