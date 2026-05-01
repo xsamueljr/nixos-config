@@ -4,6 +4,12 @@
   home.homeDirectory = "/home/samuel";
   home.stateVersion = "25.11";
 
+  # para android
+  home.sessionVariables = {
+    ANDROID_SDK_ROOT = "$HOME/Android/Sdk";
+    ANDROID_HOME = "$HOME/Android/Sdk"; # algunos tools legacy usan esta
+  };
+
   programs.bash = {
     enable = true;
     shellAliases = {
