@@ -169,6 +169,7 @@ in
       nixd # another one lol
       bun
       go
+      opencode
 
       # emulators (100% real)
       ryubing
