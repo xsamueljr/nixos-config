@@ -157,6 +157,7 @@ in
       # gaming
       lutris
       heroic
+      protonplus
 
       # Nix-specific utilities
       nh
