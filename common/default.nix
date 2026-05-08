@@ -157,7 +157,6 @@ in
       # gaming
       lutris
       heroic
-      protonplus
 
       # Nix-specific utilities
       nh
@@ -174,6 +173,9 @@ in
 
       # emulators (100% real)
       ryubing
+
+      # gaming
+      protonplus
     ]);
 
   programs.steam.enable = true;
