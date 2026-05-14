@@ -93,18 +93,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
-      "docker"
     ];
-  };
-
-  # In /etc/nixos/configuration.nix
-  virtualisation.docker = {
-    enable = true;
-
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
   };
 
   environment.systemPackages =

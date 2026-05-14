@@ -15,12 +15,21 @@
 
   # Android
   nixpkgs.config.android_sdk.accept_license = true;
-
   programs.adb.enable = true;
+  
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
   users.users.samuel.extraGroups = [
     "kvm"
     "adbusers"
+    "docker"
   ];
-
-  virtualisation.docker.enable = true;
 }
