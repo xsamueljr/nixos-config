@@ -6,5 +6,6 @@
     ./dev.nix
     ./gaming.nix
     ./user.nix
+    ./locale.nix
   ];
 }
