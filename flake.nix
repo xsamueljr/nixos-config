@@ -40,6 +40,7 @@
             ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/laptop/configuration.nix
             ./common/home.nix
+            ./modules/dev.nix
           ];
         };
 
