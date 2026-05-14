@@ -39,7 +39,6 @@
           modules = [
             ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/laptop/configuration.nix
-            ./common/home.nix
             ./modules/bundle.nix
           ];
         };
@@ -50,7 +49,6 @@
           modules = [
             ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/desktop/configuration.nix
-            ./common/home.nix
             ./modules/bundle.nix
           ];
         };
