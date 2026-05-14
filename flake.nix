@@ -21,12 +21,23 @@
       home-manager,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+
+      overlay-unstable = final: prev: {
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
+    in
     {
       nixosConfigurations = {
         nixos-laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/laptop/configuration.nix
             ./common/home.nix
           ];
@@ -36,6 +47,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/desktop/configuration.nix
             ./common/home.nix
           ];
