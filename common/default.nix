@@ -16,7 +16,6 @@ let
 in
 {
   imports = [
-    ./android-dev.nix
     inputs.spicetify-nix.nixosModules.spicetify
   ];
 

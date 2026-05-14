@@ -2,20 +2,25 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Paquetes del canal estable (25.11)
     git
     vscode
     jdk21
+    android-studio
     
-    # Paquetes del canal unstable gracias al overlay
     unstable.uv
     unstable.zed-editor
     unstable.nixd
     unstable.go
   ];
 
-  # Configuración específica de dev que antes estaba en common/android-dev.nix
+  # Android
+  nixpkgs.config.android_sdk.accept_license = true;
+
   programs.adb.enable = true;
+  users.users.samuel.extraGroups = [
+    "kvm"
+    "adbusers"
+  ];
 
   virtualisation.docker.enable = true;
 }
