@@ -51,6 +51,7 @@
             ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/desktop/configuration.nix
             ./common/home.nix
+            ./modules/dev.nix
           ];
         };
       };
