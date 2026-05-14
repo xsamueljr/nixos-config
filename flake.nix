@@ -40,8 +40,7 @@
             ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/laptop/configuration.nix
             ./common/home.nix
-            ./modules/dev.nix
-            ./modules/gaming.nix
+            ./modules/bundle.nix
           ];
         };
 
@@ -52,8 +51,7 @@
             ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./hosts/desktop/configuration.nix
             ./common/home.nix
-            ./modules/dev.nix
-            ./modules/gaming.nix
+            ./modules/bundle.nix
           ];
         };
       };
