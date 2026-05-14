@@ -153,10 +153,6 @@ in
       fastfetch
       btop
 
-      # gaming
-      lutris
-      heroic
-
       # Nix-specific utilities
       nh
       nix-output-monitor
@@ -169,16 +165,7 @@ in
       bun
       go
       opencode
-
-      # emulators (100% real)
-      ryubing
-
-      # gaming
-      protonplus
     ]);
-
-  programs.steam.enable = true;
-
   services.flatpak.enable = true;
 
   # nix-ld with common libraries so a lot of binaries work
