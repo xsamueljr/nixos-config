@@ -22,21 +22,8 @@ in
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # pa no llenar el disco
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # nix moderno
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -109,8 +96,6 @@ in
       "docker"
     ];
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   # In /etc/nixos/configuration.nix
   virtualisation.docker = {
