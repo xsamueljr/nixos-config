@@ -19,8 +19,22 @@ in
     inputs.spicetify-nix.nixosModules.spicetify
   ];
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use latest kernel compiled with CPU optimizations.
+  hardware.cpu.intel.updateMicrocode = true;
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    linux_optimizado = pkgs.linuxPackages_latest.extend (
+      self: super: {
+        kernel = super.kernel.override {
+          argsOverride = {
+            stdenv = pkgs.withCFlags [ "-march=native" "-O3" "-pipe" ] pkgs.stdenv;
+          };
+        };
+      }
+    );
+  };
+
+  boot.kernelPackages = pkgs.linux_optimizado;
 
   # Enable networking
   networking.networkmanager.enable = true;
