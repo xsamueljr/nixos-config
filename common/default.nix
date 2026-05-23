@@ -27,7 +27,7 @@ in
       self: super: {
         kernel = super.kernel.override {
           argsOverride = {
-            stdenv = pkgs.withCFlags [ "-march=native" "-O3" "-pipe" ] pkgs.stdenv;
+            stdenv = pkgs.withCFlags [ "-march=native" "-O3" "-pipe" "-Wno-error" ] pkgs.stdenv;
           };
         };
       }
