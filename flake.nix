@@ -25,11 +25,11 @@
       system = "x86_64-linux";
 
       overlay-unstable = final: prev: {
-      unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
       };
-    };
     in
     {
       nixosConfigurations = {
@@ -37,7 +37,12 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [ overlay-unstable ];
+              }
+            )
             ./hosts/laptop/configuration.nix
             ./modules/bundle.nix
           ];
@@ -45,9 +50,26 @@
 
         nixos-desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            pkgs-v3 = import nixpkgs-unstable {
+              inherit system;
+              config = {
+                allowUnfree = false;
+                localSystem = {
+                  gcc.arch = "x86-64-v3";
+                  gcc.tune = "x86-64-v3";
+                };
+              };
+            };
+          };
           modules = [
-            ({ ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [ overlay-unstable ];
+              }
+            )
             ./hosts/desktop/configuration.nix
             ./modules/bundle.nix
           ];

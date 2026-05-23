@@ -4,6 +4,7 @@
 
 {
   pkgs,
+  pkgs-v3,
   inputs,
   ...
 }:
@@ -19,22 +20,12 @@ in
     inputs.spicetify-nix.nixosModules.spicetify
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   # Use latest kernel compiled with CPU optimizations.
   hardware.cpu.intel.updateMicrocode = true;
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    linux_optimizado = pkgs.linuxPackages_latest.extend (
-      self: super: {
-        kernel = super.kernel.override {
-          argsOverride = {
-            stdenv = pkgs.withCFlags [ "-march=native" "-O3" "-pipe" "-Wno-error" ] pkgs.stdenv;
-          };
-        };
-      }
-    );
-  };
-
-  boot.kernelPackages = pkgs.linux_optimizado;
+  boot.kernelPackages = pkgs-v3.linuxPackages_latest;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -95,14 +86,14 @@ in
   environment.systemPackages =
     (with pkgs; [
       # CLI utils / apps
-      wget
-      curl
-      aria2
-      bat
-      tree
-      git
-      micro
-      openssh
+      pkgs-v3.wget
+      pkgs-v3.curl
+      pkgs-v3.aria2
+      pkgs-v3.bat
+      pkgs-v3.tree
+      pkgs-v3.git
+      pkgs-v3.micro
+      pkgs-v3.openssh
 
       # Desktop apps
       vlc
@@ -120,7 +111,7 @@ in
       docker-compose
 
       # to flex
-      fastfetch
+      pkgs-v3.fastfetch
       btop
 
       # Nix-specific utilities
