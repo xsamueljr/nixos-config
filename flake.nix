@@ -55,7 +55,7 @@
             pkgs-v3 = import nixpkgs-unstable {
               inherit system;
               config = {
-                allowUnfree = false;
+                allowUnfree = true;
                 localSystem = {
                   gcc.arch = "x86-64-v3";
                   gcc.tune = "x86-64-v3";
