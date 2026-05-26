@@ -1,11 +1,8 @@
-{
-  ...
-}:
+{ ... }:
 
 {
   imports = [
-    ../../common
-    ../../common/nvidia-base.nix
+    ../../modules/nvidia-base.nix
     ./hardware-configuration.nix
   ];
 
