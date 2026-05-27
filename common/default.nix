@@ -4,6 +4,7 @@
 
 {
   pkgs,
+  pkgs-v3,
   inputs,
   ...
 }:
@@ -20,8 +21,8 @@ in
     inputs.spicetify-nix.nixosModules.spicetify
   ];
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use latest kernel (self-compiled).
+  boot.kernelPackages = pkgs-v3.linuxPackages_latest;
 
   # pa no llenar el disco
   nix.gc = {
@@ -125,15 +126,6 @@ in
 
   environment.systemPackages =
     (with pkgs; [
-      # CLI utils / apps
-      wget
-      curl
-      aria2
-      bat
-      tree
-      git
-      micro
-      openssh
 
       # Desktop apps
       vlc
@@ -150,13 +142,12 @@ in
       jetbrains.idea-oss
       docker-compose
 
-      # to flex
-      fastfetch
       btop
 
       # gaming
       lutris
       heroic
+      steam-run
 
       # Nix-specific utilities
       nh
@@ -164,18 +155,28 @@ in
       nvd
     ])
     ++ (with unstable; [
-      zed-editor
-      nil # nix language server
-      nixd # another one lol
       bun
       go
       opencode
 
-      # emulators (100% real)
-      ryubing
-
       # gaming
       protonplus
+    ])
+    ++ (with pkgs-v3; [
+      # CLI utils / apps
+      wget
+      curl
+      aria2
+      bat
+      tree
+      git
+      micro
+      openssh
+      fastfetch
+      zed-editor
+      nil
+      nixd
+
     ]);
 
   programs.steam.enable = true;

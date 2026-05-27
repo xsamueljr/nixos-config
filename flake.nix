@@ -21,11 +21,25 @@
       home-manager,
       ...
     }@inputs:
+    let
+      pkgs-v3 = import nixpkgs-unstable {
+        config = {
+          allowUnfree = true;
+          localSystem = {
+            gcc.arch = "x86-64-v3";
+            gcc.tune = "x86-64-v3";
+          };
+        };
+      };
+    in
     {
       nixosConfigurations = {
         nixos-laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            pkgs-v3 = pkgs-v3;
+          };
           modules = [
             ./hosts/laptop/configuration.nix
             ./common/home.nix
@@ -34,7 +48,10 @@
 
         nixos-desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            pkgs-v3 = pkgs-v3;
+          };
           modules = [
             ./hosts/desktop/configuration.nix
             ./common/home.nix
