@@ -22,7 +22,10 @@
       ...
     }@inputs:
     let
+      system = "x86_64-linux";
+
       pkgs-v3 = import nixpkgs-unstable {
+        inherit system;
         config = {
           allowUnfree = true;
           localSystem = {
@@ -35,7 +38,6 @@
     {
       nixosConfigurations = {
         nixos-laptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
             pkgs-v3 = pkgs-v3;
@@ -47,7 +49,6 @@
         };
 
         nixos-desktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
             pkgs-v3 = pkgs-v3;
