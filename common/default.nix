@@ -154,6 +154,10 @@ in
       nix-output-monitor
       nvd
     ])
+    ++ (with pkgs.gnomeExtensions; [
+      appindicator
+      runcat
+    ])
     ++ (with unstable; [
       bun
       go
