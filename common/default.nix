@@ -13,7 +13,7 @@ let
     system = "x86_64-linux";
     config.allowUnfree = true;
   };
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.hostPlatform.system};
 in
 {
   imports = [
