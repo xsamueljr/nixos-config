@@ -22,7 +22,7 @@ in
   ];
 
   # Use latest kernel (self-compiled).
-  boot.kernelPackages = pkgs-v3.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # pa no llenar el disco
   nix.gc = {
