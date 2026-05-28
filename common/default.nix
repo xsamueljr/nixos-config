@@ -128,13 +128,10 @@ in
     (with pkgs; [
 
       # Desktop apps
-      vlc
-      obs-studio
-      vscode
+
       gnome-tweaks
       obsidian
-      brave
-      vesktop
+
       telegram-desktop
 
       # Development
@@ -181,6 +178,12 @@ in
       nil
       nixd
 
+      # Desktop apps
+      vlc
+      obs-studio
+      vscode
+      brave
+      vesktop
     ]);
 
   programs.steam.enable = true;
