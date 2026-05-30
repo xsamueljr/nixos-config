@@ -181,7 +181,7 @@ in
       # Desktop apps
       vlc
       obs-studio
-      vscode
+      vscode-fhs
       brave
       vesktop
     ]);
