@@ -154,6 +154,7 @@ in
     ++ (with pkgs.gnomeExtensions; [
       appindicator
       runcat
+      blur-my-shell
     ])
     ++ (with unstable; [
       bun
