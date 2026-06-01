@@ -18,4 +18,9 @@
   environment.systemPackages = with pkgs; [
     gamemode
   ];
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "samuel";
+  };
 }
