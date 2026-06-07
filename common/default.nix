@@ -138,6 +138,7 @@ in
       jdk21
       jetbrains.idea-oss
       docker-compose
+      gnome-boxes
 
       btop
 
