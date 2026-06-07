@@ -122,6 +122,8 @@ in
       enable = true;
       setSocketVariable = true;
     };
+
+    package = pkgs.docker_29;
   };
 
   virtualisation.libvirtd.enable = true;
