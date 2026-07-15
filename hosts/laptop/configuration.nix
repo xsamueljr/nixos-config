@@ -17,7 +17,7 @@
 
   # cositas pa que furule la red
   # 1. firmware propietario
-  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
 
   # 2. ahorro de energía que le chincha a la tarjeta + algo de un github
   boot.kernelParams = [
@@ -29,11 +29,6 @@
   boot.extraModprobeConfig = ''
     options mt7921e amsdu_disable=1
   '';
-
-  # 4. algo más de wifi potencia
-  networking.networkmanager.wifi.powersave = false;
-  networking.networkmanager.settings.wifi.backend = "iwd";
-  networking.wireless.iwd.enable = true;
 
   hardware.nvidia = {
     powerManagement.enable = true;
