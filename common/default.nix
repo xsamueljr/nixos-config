@@ -140,7 +140,7 @@ in
 
       # Development
       jdk21
-      jetbrains.idea-oss
+      jetbrains.idea
       docker-compose
       gnome-boxes
 
