@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 
@@ -8,7 +9,8 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = false; # driver propietario
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     nvidiaSettings = true;
   };
 }
