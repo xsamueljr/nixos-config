@@ -21,8 +21,7 @@ in
     inputs.spicetify-nix.nixosModules.spicetify
   ];
 
-  # Use latest kernel (self-compiled).
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   # pa no llenar el disco
   nix.gc = {
