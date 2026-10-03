@@ -214,16 +214,16 @@ in
       libpng
 
       # Si vas a ejecutar apps gráficas o juegos, añade estas:
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXi
-      xorg.libXrender
-      xorg.libXtst
-      xorg.libICE
-      xorg.libSM
+      libx11
+      libxcursor
+      libxdamage
+      libxext
+      libxfixes
+      libxi
+      libxrender
+      libxtst
+      libice
+      libsm
       libGL
       libpulseaudio
 
