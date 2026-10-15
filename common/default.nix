@@ -23,6 +23,9 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_6_18;
 
+  # enable REISUB
+  boot.kernel.sysctl."kernel.sysrq" = 1;
+
   # pa no llenar el disco
   nix.gc = {
     automatic = true;
