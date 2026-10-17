@@ -130,6 +130,8 @@ in
 
   virtualisation.libvirtd.enable = true;
 
+  services.cloudflare-warp.enable = true;
+
   environment.systemPackages =
     (with pkgs; [
 
@@ -152,6 +154,9 @@ in
       lutris
       heroic
       steam-run
+
+      # warp
+      cloudflare-warp
 
       # Nix-specific utilities
       nh
