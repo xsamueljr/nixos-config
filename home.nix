@@ -9,6 +9,7 @@
     ANDROID_SDK_ROOT = "$HOME/Android/Sdk";
     ANDROID_HOME = "$HOME/Android/Sdk"; # algunos tools legacy usan esta
     NIXPKGS_ALLOW_UNFREE = 1;
+    NIXOS_OZONE_WL = 1;
   };
 
   programs.bash = {
