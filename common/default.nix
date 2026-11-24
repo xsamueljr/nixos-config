@@ -190,6 +190,8 @@ in
       zed-editor
       nil
       nixd
+      ripgrep
+      fd
 
       # Desktop apps
       vlc
