@@ -79,6 +79,16 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Syncthing
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "samuel";
+    group = "users";
+    dataDir = "/home/samuel";
+    configDir = "/home/samuel/.config/syncthing";
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
